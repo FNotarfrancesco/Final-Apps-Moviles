@@ -78,10 +78,10 @@ fun SignosView (
 @Composable
 fun ListaDeSignosView(signos: List<Signo>, onSelect: (Signo)->Unit){
     LazyColumn {
-        items(items = signos) {signo ->
+        items(items = signos) { signo ->
             Card(
                 modifier = Modifier
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = 20.dp, vertical = 5.dp)
                     .fillMaxWidth(),
                 colors = CardDefaults.cardColors(
                     contentColor = MaterialTheme.colorScheme.secondary,
@@ -91,11 +91,11 @@ fun ListaDeSignosView(signos: List<Signo>, onSelect: (Signo)->Unit){
                     onSelect(signo)
                 }
             ) {
-                Row (
+                Row(
                     verticalAlignment = Alignment.CenterVertically
-                ){
+                ) {
                     Image(
-                        painterResource(R.drawable.s001),
+                        painterResource(signo.iconId),
                         contentDescription = "",
                         contentScale = ContentScale.Fit,
                         modifier = Modifier
@@ -104,9 +104,9 @@ fun ListaDeSignosView(signos: List<Signo>, onSelect: (Signo)->Unit){
                             .padding(10.dp),
                     )
                     Column {
-                        Row (
+                        Row(
                             verticalAlignment = Alignment.Bottom
-                        ){
+                        ) {
                             Text(
                                 modifier = Modifier.padding(10.dp),
                                 style = MaterialTheme.typography.titleMedium,
@@ -122,11 +122,10 @@ fun ListaDeSignosView(signos: List<Signo>, onSelect: (Signo)->Unit){
                         Text(
                             modifier = Modifier.padding(10.dp),
                             style = MaterialTheme.typography.bodyMedium,
-                            text = "Esta descripcion esta harcodeada"
+                            text = signo.descripcion
                         )
                     }
                 }
-
             }
         }
     }
